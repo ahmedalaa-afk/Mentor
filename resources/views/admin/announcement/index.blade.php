@@ -1,0 +1,9 @@
+@extends('admin.layouts.master')
+@section('body-class','announcement-page')
+@section('announcement-active','active')
+@section('content')
+@livewire('admin.announcement.announcements-data')
+@livewire('admin.announcement.announcements-create')
+@livewire('admin.announcement.announcements-edit')
+@livewire('admin.announcement.announcements-delete')
+@endsection

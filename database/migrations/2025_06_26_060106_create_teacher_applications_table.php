@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('teacher_applications', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
+            $table->foreignId('user_id')->unique()->constrained('users');
+            $table->dateTime('apply_at');
             $table->string('cv');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['accepted', 'pending', 'rejected']);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\TeacherApplicationController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\HomeController;
@@ -49,9 +50,9 @@ Route::prefix('/admin')->middleware(['auth', 'admin'])->controller(AdminHomeCont
     Route::prefix('/teacher')->controller(TeacherController::class)->name('teacher.')->group(function () {
         Route::get('/', 'index')->name('index');
         // Teacher Application
-        // Route::prefix('application')->controller(TeacherApplicationController::class)->name('application.')->group(function () {
-        //     Route::get('/', 'index')->name('index');
-        // });
+        Route::prefix('application')->controller(TeacherApplicationController::class)->name('application.')->group(function () {
+            Route::get('/', 'index')->name('index');
+        });
     });
     // Category
     Route::prefix('/category')->controller(CategoryController::class)->name('category.')->group(function () {

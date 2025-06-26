@@ -42,30 +42,30 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="Your Email" value="{{ old('email') }}" autofocus >
+                                    placeholder="Your Email" value="{{ old('email') }}" autofocus>
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
-                            
+
                             <div class="form-group mb-3">
                                 <input type="password" class="form-control" name="password" id="password"
-                                    placeholder="Your Password" >
+                                    placeholder="Your Password">
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
-                        
+
                             <div class="form-group mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" name="remember" id="remember">
                                 <label class="form-check-label" for="remember">Remember me</label>
                             </div>
-                        
+
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
                             </div>
                         </form>
-                        
+
 
                         <div class="mt-4 text-center">
                             <a href="forgot-password.html" class="text-muted">Forgot password?</a>
-                            <p class="mt-3">Don't have an account? <a href="register.html">Register here</a></p>
+                            <p class="mt-3">Don't have an account? <a href="{{route('register')}}">Register here</a></p>
                         </div>
 
                         <div class="social-login mt-4">

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Controllers\Admin\TeacherApplicationController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,6 +52,15 @@ class User extends Authenticatable
         return $this->hasOne(Currency::class);
     }
 
+    // Student Section
+
+    public function teacherApplication()
+    {
+        return $this->hasOne(TeacherApplication::class)->whereHas('roles', function ($q) {
+            $q->where('name', 'student');
+        });
+    }
+
     // Admin Section
     public function teachers()
     {
@@ -59,16 +70,23 @@ class User extends Authenticatable
             });
     }
 
-    public function admin()
+    public function categories()
     {
-        return $this->belongsTo(User::class)->whereHas('roles', function ($q) {
+        return $this->hasMany(User::class)->whereHas('roles', function ($q) {
             $q->where('name', 'admin');
         });
     }
 
-    public function categories()
+    public function teacherApplicationDate()
     {
-        return $this->belongsTo(User::class)->whereHas('roles', function ($q) {
+        return $this->hasOne(TeacherApplicationDateControl::class)->whereHas('roles', function ($q) {
+            $q->where('name', 'admin');
+        });
+    }
+
+    public function getAllTeachersApplications()
+    {
+        return $this->hasMany(TeacherApplication::class)->whereHas('roles', function ($q) {
             $q->where('name', 'admin');
         });
     }

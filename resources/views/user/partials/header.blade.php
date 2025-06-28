@@ -26,8 +26,18 @@
                 <li><a href="{{ route('user.announcement') }}" class="@yield('announcement-active')">Announcement</a>
                 </li>
                 @if (Auth::user())
-                <li class="dropdown"><a href="#"><span>User</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <li class="dropdown">
+                    <a href="#" class="d-flex align-items-center">
+                        @if (Auth::user()->image)
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="Profile Photo"
+                            class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;">
+                        @else
+                        <img src="{{ asset('assets/img/trainers/trainer-1-2.jpg') }}" alt="Default Profile"
+                            class="rounded-circle me-2" width="32" height="32" style="object-fit: cover;">
+                        @endif
+                        <span>{{ Auth::user()->name }}</span>
+                        <i class="bi bi-chevron-down toggle-dropdown ms-1"></i>
+                    </a>
                     <ul>
                         <li><a href="{{ route('user.profile.edit') }}">Profile</a></li>
                         <li>
@@ -50,8 +60,6 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-        <a class="btn-getstarted" href="{{ route('user.course') }}">Get Started</a>
 
     </div>
 </header>

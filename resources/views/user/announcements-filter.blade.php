@@ -1,29 +1,4 @@
 <div class="container" data-aos="fade-up" data-aos-delay="100" wire:ignore.self>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="announcement-filters mb-4">
-                <div class="row">
-                    <div class="col-md-4">
-                        <select class="form-select" wire:model.live="selectedCategory">
-                            <option value="">All Categories</option>
-                            @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-select" wire:model.live="selectedImportance">
-                            <option value="">All Importance Levels</option>
-                            @foreach ($importances as $level)
-                            <option value="{{$level}}">{{ucfirst($level)}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row gy-4">
         @forelse ($announcements as $announcement)
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" wire:ignore.self>

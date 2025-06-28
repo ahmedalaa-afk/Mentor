@@ -11,16 +11,16 @@ class TeacherApplication extends Model
 
     protected $guarded = [];
 
-    public function student()
+    public function user()
     {
-        $this->belongsTo(User::class)->whereHas('roles', function ($qr) {
+        return $this->belongsTo(User::class)->whereHas('roles', function ($qr) {
             $qr->where('name', 'student');
         });
     }
 
     public function admin()
     {
-        $this->belongsTo(User::class)->whereHas('roles', function ($qr) {
+        return $this->belongsTo(User::class)->whereHas('roles', function ($qr) {
             $qr->where('name', 'admin');
         });
     }

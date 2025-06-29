@@ -16,8 +16,7 @@
                         <div class="announcement-details">
                             <p><strong>Category:</strong> {{ optional($announcement->category)->name ??
                                 'N/A' }}</p>
-                            <p><strong>Date:</strong> {{$announcement->start_at}} -
-                                {{$announcement->end_at}}</p>
+                            <p><strong>Date:</strong> {{ $announcement->formatted_date_range }}</p>
                             <p><strong>Status:</strong> {{ucfirst($announcement->status)}}</p>
                         </div>
                         <div class="mt-3">

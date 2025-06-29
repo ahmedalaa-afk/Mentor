@@ -50,8 +50,8 @@
                                 {{ ucfirst($announcement->target_audience) }}
                             </span>
                         </td>
-                        <td>{{ $announcement->start_at }}</td>
-                        <td>{{ $announcement->end_at }}</td>
+                        <td>{{ $announcement->formatted_start_at }}</td>
+                        <td>{{ $announcement->formatted_end_at }}</td>
                         <td>
                             <span class="badge bg-{{ $announcement->status === 'active' ? 'success' : 'danger' }}">
                                 {{ ucfirst($announcement->status) }}

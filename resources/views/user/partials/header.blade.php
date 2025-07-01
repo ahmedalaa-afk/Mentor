@@ -25,8 +25,56 @@
                 <li><a href="{{ route('user.contact') }}" class="@yield('contact-active')">Contact</a></li>
                 <li><a href="{{ route('user.announcement') }}" class="@yield('announcement-active')">Announcement</a>
                 </li>
+                <li class="dropdown notification-dropdown">
+                    <a href="#" class="notification-toggle d-flex align-items-center position-relative">
+                        <i class="fa-solid fa-bell fa-lg"></i>
+                        @php
+                        $unreadCount = \App\Models\Announcement::where('created_at', '>=', now()->subDays(7))->count();
+                        @endphp
+                        @if($unreadCount > 0)
+                        <span class="notification-badge">{{ $unreadCount > 99 ? '99+' : $unreadCount }}</span>
+                        @endif
+                    </a>
+                    <div class="notification-dropdown-menu">
+                        <div class="notification-header">
+                            <h6 class="mb-0">Notifications</h6>
+                            @if($unreadCount > 0)
+                            <small class="text-muted">{{ $unreadCount }} new</small>
+                            @endif
+                        </div>
+                        <div class="notification-list">
+                            @php
+                            $recentAnnouncements = \App\Models\Announcement::latest()->take(5)->get();
+                            @endphp
+                            @forelse($recentAnnouncements as $announcement)
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fa-solid fa-bullhorn text-primary"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">{{ $announcement->title }}</div>
+                                    <div class="notification-text">{{ Str::limit($announcement->content, 50) }}</div>
+                                    <div class="notification-time">{{ $announcement->created_at->diffForHumans() }}
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                            <div class="notification-item">
+                                <div class="notification-content text-center text-muted">
+                                    <i class="fa-solid fa-bell-slash mb-2"></i>
+                                    <div>No notifications</div>
+                                </div>
+                            </div>
+                            @endforelse
+                        </div>
+                        <div class="notification-footer">
+                            <a href="{{ route('user.announcement') }}" class="btn btn-sm btn-outline-primary w-100">View
+                                All</a>
+                        </div>
+                    </div>
+                </li>
                 @if (Auth::user())
-                <li class="dropdown">
+                <li class=" dropdown">
                     <a href="#" class="d-flex align-items-center">
                         @if (Auth::user()->image)
                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="Profile Photo"

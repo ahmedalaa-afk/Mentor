@@ -3,6 +3,7 @@
 use App\Console\Commands\DeleteExpiredAnnouncement;
 use App\Console\Commands\DeleteExpiredAnnouncements;
 use App\Http\Middleware\AdminCheck;
+use App\Http\Middleware\IsSuperAdmin;
 use App\Http\Middleware\TeacherCheck;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -18,6 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
+            'super_admin' => IsSuperAdmin::class,
             'admin' => AdminCheck::class,
             'teacher' => TeacherCheck::class,
         ]);

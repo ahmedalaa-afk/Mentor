@@ -59,6 +59,9 @@
                                 <button type="submit" class="btn bg-transparent">Logout</button>
                             </form>
                         </li>
+                        @if (Auth::user()->hasRole('super_admin'))
+                        <li><a href="{{ route('super_admin.index') }}">Super Admin Dashboard</a></li>
+                        @endif
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{ route('admin.index') }}">Admin Dashboard</a></li>
                         @endif

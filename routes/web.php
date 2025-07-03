@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SuperAdmin\ProfileController as SuperAdminProfileController;
+use App\Http\Controllers\SuperAdmin\SuperAdminHomeController;
 use App\Http\Controllers\Teacher\ProfileController as TeacherProfileController;
 use App\Http\Controllers\Teacher\TeacherHomeController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,14 @@ Route::controller(HomeController::class)->name('user.')->group(function () {
     Route::get('/course', 'course')->name('course');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
+});
+
+// Super Admin Section
+Route::prefix('/super-admin')->middleware(['auth', 'super_admin'])->controller(SuperAdminHomeController::class)->name('super_admin.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    // Profile
+    Route::get('/profile', [SuperAdminProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/photo',  [SuperAdminProfileController::class, 'updatePhoto'])->name('profile.photo.update');
 });
 
 // Admin Section

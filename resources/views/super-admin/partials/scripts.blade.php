@@ -21,59 +21,20 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <script>
-    // super-admin => Teacher Sectino
+    // super-admin => Role Section
     document.addEventListener('livewire:init', () => {
-        Livewire.on('createTeacherModal', (event) => {
+        Livewire.on('createRoleModal', (event) => {
             $('#createModal').modal('toggle');
         });
     });
     document.addEventListener('livewire:init', () => {
-        Livewire.on('showTeacherModal', (event) => {
-            $('#showModal').modal('toggle');
-        });
-    });
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('deleteTeacherModal', (event) => {
+        Livewire.on('deleteRoleModal', (event) => {
             $('#deleteModal').modal('toggle');
         });
     });
     document.addEventListener('livewire:init', () => {
-        Livewire.on('editTeacherModal', (event) => {
+        Livewire.on('editRoleModal', (event) => {
             $('#editModal').modal('toggle');
-        });
-    });
-
-    // super-admin => Category Section
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('createCategoryModal', (event) => {
-            $('#createModal').modal('toggle');
-        });
-    });
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('deleteCategoryModal', (event) => {
-            $('#deleteModal').modal('toggle');
-        });
-    });
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('editCategoryModal', (event) => {
-            $('#editModal').modal('toggle');
-        });
-    });
-
-    // super-admin => Announcement Section
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('createAnnouncementModal', (event) => {
-            $('#createModal').modal('toggle');
-        });
-    });
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('editAnnouncementModal', (event) => {
-            $('#editModal').modal('toggle');
-        });
-    });
-    document.addEventListener('livewire:init', () => {
-        Livewire.on('deleteAnnouncementModal', (event) => {
-            $('#deleteModal').modal('toggle');
         });
     });
 </script>

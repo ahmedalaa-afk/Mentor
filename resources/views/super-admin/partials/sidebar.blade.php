@@ -26,6 +26,13 @@
                 <div data-i18n="Analytics">Website</div>
             </a>
         </li>
+        <!-- Manage Roles -->
+        <li class="menu-item mt-3 @yield('roles-active')">
+            <a href="{{ route('super_admin.roles') }}" class="menu-link">
+                <i class='menu-icon tf-icons bx bxs-home-circle' undefined></i>
+                <div data-i18n="Analytics">Roles</div>
+            </a>
+        </li>
 
     </ul>
 </aside>

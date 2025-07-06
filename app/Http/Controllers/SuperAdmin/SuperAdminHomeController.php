@@ -11,4 +11,5 @@ class SuperAdminHomeController extends Controller
     {
         return view('super-admin.index');
     }
+    
 }

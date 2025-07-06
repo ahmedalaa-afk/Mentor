@@ -10,6 +10,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdmin\ProfileController as SuperAdminProfileController;
+use App\Http\Controllers\SuperAdmin\RolesController;
 use App\Http\Controllers\SuperAdmin\SuperAdminHomeController;
 use App\Http\Controllers\Teacher\ProfileController as TeacherProfileController;
 use App\Http\Controllers\Teacher\TeacherHomeController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 // User Section
 Route::controller(HomeController::class)->name('user.')->group(function () {
 
+    // auth user only
     Route::middleware('auth')->controller(ProfileController::class)->group(function () {
         Route::get('/profile',  'edit')->name('profile.edit');
         Route::patch('/profile',  'update')->name('profile.update');
@@ -48,6 +50,9 @@ Route::prefix('/super-admin')->middleware(['auth', 'super_admin'])->controller(S
     // Profile
     Route::get('/profile', [SuperAdminProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/photo',  [SuperAdminProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+
+    // Roles
+    Route::get('/roles',[RolesController::class,'index'])->name('roles');
 });
 
 // Admin Section

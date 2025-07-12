@@ -37,6 +37,17 @@
             $('#editModal').modal('toggle');
         });
     });
+    // super-admin => Users Section
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('deleteRoleModal', (event) => {
+            $('#deleteModal').modal('toggle');
+        });
+    });
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('editUserRoleModal', (event) => {
+            $('#editModal').modal('toggle');
+        });
+    });
 </script>
 
 @livewireScripts

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuperAdmin\ProfileController as SuperAdminProfileController;
 use App\Http\Controllers\SuperAdmin\RolesController;
 use App\Http\Controllers\SuperAdmin\SuperAdminHomeController;
+use App\Http\Controllers\SuperAdmin\UsersController;
 use App\Http\Controllers\Teacher\ProfileController as TeacherProfileController;
 use App\Http\Controllers\Teacher\TeacherHomeController;
 use Illuminate\Support\Facades\Route;
@@ -50,9 +51,11 @@ Route::prefix('/super-admin')->middleware(['auth', 'super_admin'])->controller(S
     // Profile
     Route::get('/profile', [SuperAdminProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/photo',  [SuperAdminProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+    // controll users
+    Route::get('/users', [UsersController::class, 'index'])->name('users');
 
     // Roles
-    Route::get('/roles',[RolesController::class,'index'])->name('roles');
+    Route::get('/roles', [RolesController::class, 'index'])->name('roles');
 });
 
 // Admin Section

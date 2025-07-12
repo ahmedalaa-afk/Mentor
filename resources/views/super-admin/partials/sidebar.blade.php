@@ -33,6 +33,13 @@
                 <div data-i18n="Analytics">Roles</div>
             </a>
         </li>
+        <!-- Manage Users -->
+        <li class="menu-item mt-3 @yield('users-active')">
+            <a href="{{ route('super_admin.users') }}" class="menu-link">
+                <i class='menu-icon tf-icons bx bxs-home-circle' undefined></i>
+                <div data-i18n="Analytics">Users</div>
+            </a>
+        </li>
 
     </ul>
 </aside>

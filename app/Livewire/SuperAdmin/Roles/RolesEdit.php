@@ -17,6 +17,12 @@ class RolesEdit extends Component
         $this->resetValidation();
         $this->dispatch('editRoleModal');
     }
+    public function rules()
+    {
+        return [
+            'name' => 'required|exists:roles,name',
+        ];
+    }
     public function submit()
     {
         $this->role->name = $this->name;

@@ -43,9 +43,9 @@ class UsersEdit extends Component
         }
 
         session()->flash('status', 'User roles updated successfully.');
+        $this->reset(['selectedRoles', 'newRoles', 'user']);
         $this->dispatch('editUserRoleModal');
         $this->dispatch('refreshUsers')->to(UsersData::class);
-        $this->reset(['selectedRoles', 'newRoles']);
     }
 
     public function render()

@@ -1,13 +1,19 @@
 <!-- Basic Bootstrap Table -->
 <div class="card">
-    <div class="card-header">
-        <div class="col-lg-4 col-md-6">
-            <div class="mt-3">
-                <h5 class="d-inline">Users Table</h5>
-
-            </div>
+    <div class="card-header d-flex justify-content-left align-items-center flex-wrap gap-3">
+        <h5 class="mb-0">Users Table</h5>
+        <div style="min-width: 250px;">
+            <input
+                type="search"
+                class="form-control"
+                placeholder="Search..."
+                id="html5-search-input"
+                wire:model.debounce.500ms="search" />
         </div>
     </div>
+
+
+
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>
@@ -26,8 +32,6 @@
                     <td>
                         <a class="btn btn-info" wire:click.prevent="$dispatch('editUser', { id: {{ $user->id }} })" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
                             User Role </a>
-                        <a class="btn btn-danger" wire:click.prevent="$dispatch('deleteUser', { id: {{ $user->id }} })" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                            Delete</a>
                     </td>
                 </tr>
                 @endforeach
